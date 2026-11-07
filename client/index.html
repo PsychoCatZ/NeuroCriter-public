@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Недоделок</title>
+<meta name="theme-color" content="#2a2438">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="top">
+    <div id="who"><strong id="pet-title">Недоделок</strong><span id="pet-meta"></span></div>
+    <nav id="nav" aria-label="Разделы">
+      <button data-screen="dossier" aria-label="Досье">📁</button>
+      <button data-screen="diary" aria-label="Дневник и сны">📓</button>
+      <button data-screen="inspect" aria-label="Осмотр">🩺</button>
+      <button data-screen="settings" aria-label="Настройки">⚙️</button>
+    </nav>
+  </header>
+
+  <div id="banner" hidden></div>
+
+  <main id="room">
+    <canvas id="stage" width="160" height="120" aria-label="Комната с Недоделком"></canvas>
+    <section id="meters-wrap" aria-label="Ключевые потребности" hidden>
+      <button id="meters-toggle" class="meters-toggle" type="button" aria-expanded="true" aria-controls="meters">
+        <span class="mt-title">📊 Шкалы</span>
+        <span id="meters-dots" class="mt-dots" aria-hidden="true"></span>
+        <span class="mt-caret" aria-hidden="true">▾</span>
+      </button>
+      <div id="meters"></div>
+    </section>
+    <ul id="chips" aria-label="Состояние"></ul>
+    <section id="speech" aria-live="polite"></section>
+  </main>
+
+  <section id="actions" aria-label="Действия">
+    <button data-act="feed"><span>🍲</span>Накормить</button>
+    <button data-act="play"><span>🎾</span>Играть</button>
+    <button data-act="pet"><span>🤚</span>Почесать</button>
+    <button data-act="clean"><span>🫧</span>Мыть</button>
+    <button data-act="walk"><span>🚪</span>Гулять</button>
+    <button data-act="sleep"><span>🌙</span>Спать</button>
+    <button data-act="heal"><span>💊</span>Лечить</button>
+    <button data-act="reconcile"><span>🤝</span>Помириться</button>
+    <button data-act="say"><span>💬</span>Сказать</button>
+  </section>
+</div>
+
+<!-- вход по токену -->
+<div id="login" class="sheet" hidden>
+  <form class="card" id="login-form">
+    <h2>Вход</h2>
+    <p>Введи токен доступа. Он хранится только в этом браузере.</p>
+    <label for="token-input">Токен</label>
+    <input id="token-input" type="password" autocomplete="off" required>
+    <p class="error" id="login-error" hidden></p>
+    <button class="primary" type="submit">Войти</button>
+  </form>
+</div>
+
+<!-- рождение -->
+<div id="hatch" class="sheet" hidden>
+  <div class="card">
+    <h2>Образец НП доставлен</h2>
+    <p>Инвентарный номер присвоен, имени пока нет. Характер определится случайно и дальше зависит от ухода.</p>
+    <button class="primary" id="hatch-btn">Вылупить</button>
+  </div>
+</div>
+
+<!-- выбор еды -->
+<div id="food-sheet" class="sheet" hidden>
+  <div class="card">
+    <h2>Чем кормить?</h2>
+    <div id="food-list"></div>
+    <button class="secondary" data-close>Отмена</button>
+  </div>
+</div>
+
+<!-- сказать -->
+<div id="say-sheet" class="sheet" hidden>
+  <form class="card" id="say-form">
+    <h2>Сказать зверьку</h2>
+    <label for="say-input">Текст</label>
+    <input id="say-input" maxlength="200" autocomplete="off">
+    <button class="primary" type="submit">Сказать</button>
+    <button class="secondary" type="button" data-close>Отмена</button>
+  </form>
+</div>
+
+<!-- общий экран -->
+<div id="screen" class="sheet" hidden>
+  <div class="card wide">
+    <h2 id="screen-title"></h2>
+    <div id="screen-body"></div>
+    <button class="secondary" data-close>Закрыть</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

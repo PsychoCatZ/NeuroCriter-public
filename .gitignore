@@ -1,0 +1,30 @@
+# окружение и кэш
+server/.venv/
+__pycache__/
+*.pyc
+
+# данные и журналы вызовов (могут содержать реплики и промпты)
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+server/data/
+data/
+
+# секреты и локальные настройки
+.env
+*.env
+!deploy/neurocritter.env.example
+.claude/
+
+# результаты живых прогонов хранятся локально
+server/brain/demo_*results*.md
+
+# Local state and private artifacts
+.venv/
+AGENT_CONVERSATION_HISTORY.md
+*.pem
+*.pfx
+*.key
+*.log
+*.har
+.env.*
